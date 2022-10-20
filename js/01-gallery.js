@@ -19,12 +19,16 @@ itemsContainer.addEventListener("click", (event) => {
 
   instance.show();
 
-  document.addEventListener("keydown", (evt) => {
+  document.addEventListener("keydown", onClickEscape);
+  // document.removeEventListener("keyup", onClickEscape);
+
+  function onClickEscape(evt) {
     if (evt.code === "Escape") {
       console.log(evt.code);
       instance.close();
+      document.removeEventListener("keydown", onClickEscape);
     }
-  });
+  }
 });
 
 function createGalleryItems(galleryItems) {
